@@ -22,22 +22,24 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Force Java 17 Path
+    - name: Configure Environment & Accept Licenses
       run: |
         echo "JAVA_HOME=$JAVA_HOME_17_X64" >> $GITHUB_ENV
         echo "PATH=$JAVA_HOME_17_X64/bin:$PATH" >> $GITHUB_ENV
-        java -version
+        mkdir -p ~/.android
+        touch ~/.android/repositories.cfg
 
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y unzip git
+        sudo apt-get install -y unzip git libltdl-dev
         pip install --upgrade pip
         pip install --upgrade cython==0.29.33 buildozer
 
     - name: Build with Buildozer
       run: |
-        buildozer -v android debug
+        # Automatically pipe 'y' to handle any interactive prompts
+        while true; do echo y; sleep 2; done | buildozer -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
