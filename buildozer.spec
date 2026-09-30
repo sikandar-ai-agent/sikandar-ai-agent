@@ -17,7 +17,7 @@ version = 0.1
 
 # (list) Application requirements
 
-requirements = python3,kivy==2.3.0,sdl2,cython==3.0.8
+requirements = python3,kivy==2.3.0,cython==3.0.8
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
