@@ -31,13 +31,13 @@ fullscreen = 1
 #icon.filename = %(source.dir)s/data/icon.png
 
 # (str) The Android arch to build for, only armeabi-v7a is supported for now
-android.arch = armeabi-v7a
+android.archs = arm64-v8a
 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+android.api = 35
 
 # (int) Minimum Android API required
-android.minapi = 21
+android.minapi = 24
 
 # (list) Android permissions
 android.permissions = INTERNET
