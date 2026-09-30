@@ -16,10 +16,22 @@ jobs:
       with:
         python-version: '3.10'
 
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Force Java 17 Path
+      run: |
+        echo "JAVA_HOME=$JAVA_HOME_17_X64" >> $GITHUB_ENV
+        echo "PATH=$JAVA_HOME_17_X64/bin:$PATH" >> $GITHUB_ENV
+        java -version
+
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y openjdk-17-jdk unzip
+        sudo apt-get install -y unzip git
         pip install --upgrade pip
         pip install --upgrade cython==0.29.33 buildozer
 
